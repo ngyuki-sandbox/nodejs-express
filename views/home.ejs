@@ -1,0 +1,26 @@
+<form method="post">
+  <label class="mx-2">
+    <strong>Name:</strong>
+    <input type="text" name="name" value="<%= name ?? '' %>" required>
+  </label>
+  <label class="mx-2">
+    <strong>Text:</strong>
+    <input type="text" name="text" value="" required>
+  </label>
+  <button class="mx-2" type="submit">Submit</button>
+  <% if (message != null) { %>
+    <span class="mx-2 text-danger">
+      <%= message %>
+    </span>
+  <% } %>
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+</form>
+
+<ul>
+  <% posts.forEach(post => { %>
+    <li>
+      <strong><%= post.name %></strong>
+      <span><%= post.text %></span>
+    </li>
+  <% }) %>
+</ul>
